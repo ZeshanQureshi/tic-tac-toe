@@ -11,14 +11,8 @@ function playerInput(square) {
         document.getElementById(square).innerHTML = "X";
         document.getElementById(square).style.cursor = "default";
         box[square] = 1;
-
-        if (playerWin() == 1) {
-            document.getElementById("gameStatusText").innerHTML = "That square is already in use!";
-        } else {
-            easyComputerInput(); 
-
-        }
-        
+  
+        easyComputerInput(); 
 
     }
     
