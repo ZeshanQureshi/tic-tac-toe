@@ -10,23 +10,41 @@
   <header>
     <h1>Tic Tac Toe</h1>
   </header>
+
   <div class = "mainbody1">
-
-    <div class = "gameText">
-
+    
+    <div class = "gameStatus">
+      <h2>Welcome! Click a square to begin.</h2>
     </div>
     
-    <div class = "gameBoard">
-      <div class = "box"><p>X</p></div>
-      <div class = "box"></div>
-      <div class = "box"></div>
-      <div class = "box"></div>
-      <div class = "box"></div>
-      <div class = "box"></div>
-      <div class = "box"></div>
-      <div class = "box"></div>
-      <div class = "box"></div>
+    <table>
+        <tr>
+        <td><p id = "box1">X</p></td>
+        <td><p id = "box2">O</p></td>
+        <td><p id = "box3">X</p></td>
+      </tr>
+      <tr>
+        <td><p id = "box4">O</p></td>
+        <td><p id = "box5">X</p></td>
+        <td><p id = "box6">O</p></td>
+      </tr>
+      <tr>
+        <td><p id = "box7">X</p></td>
+        <td><p id = "box8">O</p></td>
+        <td><p id = "box9">X</p></td>
+      </tr>
+    </table>
+
+
+    <div class = "gameDifficulty">
+      <label for="difficultySelect"> Choose a difficulty: </label>
+
+      <select name="difficulty">
+        <option value="easy">Easy</option>
+        <option value="hard">Hard</option>
+      </select>
     </div>
+
   </div>
 
   <script src="scripts/main.js"></script>
