@@ -41,6 +41,9 @@ table {
   width: 400px;
   background-color: #1f2937;
 
+  color: #1f2937;
+  font-size: 45px;
+
   table-layout:fixed; 
 
   margin: 0 auto;
