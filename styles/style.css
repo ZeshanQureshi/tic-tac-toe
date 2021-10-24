@@ -69,6 +69,14 @@ select {
   cursor: pointer;
 }
 
+button { 
+  padding-left: 30px;
+}
+
+button:hover { 
+  color: darkred;
+}
+
 .mainbody1 {
   background-color: lightgray;
   display: table;
