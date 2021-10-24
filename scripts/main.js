@@ -1,6 +1,5 @@
 let boxUsage = [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0];
 let boxValue = ["" , "" , "" , "" , "" , "" , "" , "" , "" ];
-let winner = "";
 let gameWon = 0;
 
 
@@ -11,40 +10,54 @@ function playerInput(square) {
     if (boxUsage[square]  == 1) {
         document.getElementById("gameStatusText").innerHTML = "That square is already in use!";
 
-        //setTimeout(clearGameStatus, 2000);
-        //clearGameStatus();
+        setTimeout(clearGameStatus, 2000);
+ 
 
     } else {
         
         displayLetter(square, "X");
 
-        /*
-        document.getElementById(square).innerHTML = "X";
-        document.getElementById(square).style.cursor = "default";
-        boxUsage[square] = 1;
-        boxValue[square] = "X";
-        */
+        let playerWon = checkGameStatus(gameWon);
 
-        let gameFinish = checkGameStatus(gameWon);
-
-        if (gameFinish == 1) {
+        if (playerWon == 1) {
             
             document.getElementById("gameStatusText").innerHTML = "Player Wins!";
             endGame();
 
         } else {
             
-            easyComputerInput();
-            //setTimeout(easyComputerInput, 1000);
+            if (document.getElementById("difficultySelector").value == "easy") {
+                
+                easyComputerInput();
 
-            gameFinish = checkGameStatus(gameWon);
+                let computerWin1 = checkGameStatus(gameWon);
 
-            if (gameFinish == 2 ) {
+                if (computerWin1 == 2 ) {
 
-                document.getElementById("gameStatusText").innerHTML = "Computer Wins!";
-                endGame();
+                    document.getElementById("gameStatusText").innerHTML = "Computer Wins!";
+                    endGame();
 
+                }
+
+            } else if (document.getElementById("difficultySelector").value == "hard") {
+
+                hardComputerInput();
+
+                
+                let computerWin2 = checkGameStatus(gameWon);
+
+                if (computerWin2 == 2 ) {
+
+                    document.getElementById("gameStatusText").innerHTML = "Computer Wins!";
+                    endGame();
+
+                }
+
+                
+                
             }
+
+            
         }
          
     }
@@ -74,8 +87,52 @@ function easyComputerInput() {
     
 }
 
+
+function hardComputerInput() {
+    let numberMoves = 0;
+
+    for (var i in boxUsage) {
+        numberMoves += boxUsage[i];
+    }
+
+    if (boxValue[4] != "X") {
+
+        displayLetter (4, "O");
+
+        if (boxValue[0] == "X" && boxValue[3] == "X") {
+            
+            displayLetter(6, "O");
+
+            if (boxValue[0] == "X" && boxValue[3] == "X" && boxValue[1] == "X" ||
+                boxValue[0] == "X" && boxValue[3] == "X" && boxValue[5] == "X" ||
+                boxValue[0] == "X" && boxValue[3] == "X" && boxValue[7] == "X" ||
+                boxValue[0] == "X" && boxValue[3] == "X" && boxValue[8] == "X") {
+                
+                    displayLetter(2, "O");
+
+            } else if (boxValue[0] == "X" && boxValue[3] == "X" && boxValue[2] == "X") {
+                
+                displayLetter(1, "O");
+
+                if (boxValue[0] == "X" && boxValue[3] == "X" && boxValue[2] == "X" && boxValue[5] ||
+                    boxValue[0] == "X" && boxValue[3] == "X" && boxValue[2] == "X" && boxValue[8]) {
+
+                        displayLetter(7, "O");
+
+                    }
+
+            }
+        }
+
+    } else if (boxValue[4] == "X") {
+
+        displayLetter (8, "O");
+
+    }
+}
+
 function endGame() {
-    for (i = 0; i <= 9 ; i++) {
+    for (let i = 0; i <= 9 ; i++) {
         document.getElementById(i).style.pointerEvents = "none";
     }
 }
@@ -132,4 +189,5 @@ function clearGame() {
     }
 
     document.getElementById("gameStatusText").innerHTML = "Welcome! Click a square to begin.";
+    gameWon = 0;
 }
