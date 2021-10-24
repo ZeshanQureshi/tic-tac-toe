@@ -89,46 +89,7 @@ function easyComputerInput() {
 
 
 function hardComputerInput() {
-    let numberMoves = 0;
-
-    for (var i in boxUsage) {
-        numberMoves += boxUsage[i];
-    }
-
-    if (boxValue[4] != "X") {
-
-        displayLetter (4, "O");
-
-        if (boxValue[0] == "X" && boxValue[3] == "X") {
-            
-            displayLetter(6, "O");
-
-            if (boxValue[0] == "X" && boxValue[3] == "X" && boxValue[1] == "X" ||
-                boxValue[0] == "X" && boxValue[3] == "X" && boxValue[5] == "X" ||
-                boxValue[0] == "X" && boxValue[3] == "X" && boxValue[7] == "X" ||
-                boxValue[0] == "X" && boxValue[3] == "X" && boxValue[8] == "X") {
-                
-                    displayLetter(2, "O");
-
-            } else if (boxValue[0] == "X" && boxValue[3] == "X" && boxValue[2] == "X") {
-                
-                displayLetter(1, "O");
-
-                if (boxValue[0] == "X" && boxValue[3] == "X" && boxValue[2] == "X" && boxValue[5] ||
-                    boxValue[0] == "X" && boxValue[3] == "X" && boxValue[2] == "X" && boxValue[8]) {
-
-                        displayLetter(7, "O");
-
-                    }
-
-            }
-        }
-
-    } else if (boxValue[4] == "X") {
-
-        displayLetter (8, "O");
-
-    }
+    
 }
 
 function endGame() {
